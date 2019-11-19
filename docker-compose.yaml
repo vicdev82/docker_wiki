@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build: docker/app
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/app
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wiki
+      - MYSQL_USER=wiki
+      - MYSQL_PASSWORD=wiki
+    build: docker/db
+    ports:
+      - 3603:3603
